@@ -7,7 +7,6 @@ import numpy as np
 access = "key"
 secret = "key"
 
-
 # 내 잔고 조회_시작
 def get_balance(ticker):
       balances = upbit.get_balances()
