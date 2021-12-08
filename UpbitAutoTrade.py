@@ -69,7 +69,7 @@ else:
 
   while 1:
     try:
-      ticker = "KRW-DOGE?"
+      ticker = "KRW-DOGE"
 
     except Exception as e:
           print(e)
