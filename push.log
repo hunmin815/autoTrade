@@ -1,1 +1,24 @@
 git add . ...
+
+
+==
+git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   gitpush.sh
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   push.log
+
+==
+git commit -m Wed Dec  8 23:37:32 KST 2021 commit
+[master 870a70e] $date commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+==
+git push!
+
+!! git push ERROR! please check push.log !!
