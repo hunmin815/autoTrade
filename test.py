@@ -1,11 +1,14 @@
+#-*- coding:utf-8 -*-
+
 import time
 import pyupbit
 import datetime
 import numpy as np
+import key
 
 
-access = "key"
-secret = "key"
+access = key.access                           # Upbit API access 키
+secret = key.secret                           # Upbit API secret 키
 
 # 내 잔고 조회_시작
 def get_balance(ticker):
@@ -21,12 +24,12 @@ def get_balance(ticker):
 # 로그인_시작
 try:
   upbit = pyupbit.Upbit(access, secret)
-  my_krw = get_balance("KRW")
+  my_Balance = get_balance("KRW")             # 내 잔고
   print("Login OK")
   print("==========Autotrade start==========")
 except:
   print("!!Login ERROR!!")
 # 로그인_끝
 else:
-  print("내 잔고 : "+str(my_krw))
+  print("내 잔고 : "+str(format(int(my_Balance),','))+" 원")
   print("date:"+str(datetime.datetime.now()))
