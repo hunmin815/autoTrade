@@ -28,4 +28,5 @@ except:
   print("!!Login ERROR!!")
 # 로그인_끝
 else:
+  print("내 잔고 : "+str(my_krw))
   print("date:"+str(datetime.datetime.now()))
