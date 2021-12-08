@@ -27,7 +27,7 @@ try:
   print("Login OK")
   print("==========Autotrade start==========")
 except:
-  print("!!Login ERROR!!?")
+  print("!!Login ERROR!!")
 # 로그인_끝
 else:
   print("내 잔고 : "+str(format(int(my_Balance),','))+" 원")
