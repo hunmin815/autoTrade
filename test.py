@@ -4,11 +4,10 @@ import time
 import pyupbit
 import datetime
 import numpy as np
-import key
+import os
 
-
-access = key.access                           # Upbit API access 키
-secret = key.secret                           # Upbit API secret 키
+access = os.environ['access']                           # Upbit API access 키
+secret = os.environ['secret']                           # Upbit API secret 키
 
 # 내 잔고 조회_시작
 def get_balance(ticker):
