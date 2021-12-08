@@ -20,10 +20,8 @@ echo `git clone https://$github_id:$github_Token@github.com/hunmin815/autoTrade.
 
 result=`awk '/Unpacking objects: 100%/ && /done./' $dir"push.log"`
 
-'/1/ && /5/'
 
-
-if [-z "$result"];then
+if [ -z "$result"];then
 	echo "!! git push ERROR! please check push.log !!" >> push.log 2>&1
 else
 	echo "git push Success~!" >> push.log 2>&1
