@@ -49,7 +49,7 @@ def get_start_time(ticker):
     return start_time
 # 시작시간 조회_끝
 
-  # 종목 현재 가격조회_시작
+# 종목 현재 가격조회_시작
 def get_current_price(ticker):
     return pyupbit.get_orderbook(tickers=ticker)[0]["orderbook_units"][0]["ask_price"]
 # 종목 현재 가격조회_끝
