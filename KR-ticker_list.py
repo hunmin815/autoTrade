@@ -1,3 +1,5 @@
+#-*- coding:utf-8 -*-
+
 import pyupbit
 
 # 원화 시장 티커목록 조회
