@@ -20,12 +20,9 @@ def get_balance(ticker):
                 return 0
 
 
-best_k_run = 1
-
-
 # best_k 구하기_시작
 def get_ror(ticker, k):
-    df = pyupbit.get_ohlcv(ticker, "day", count=3)  # 3일간 일봉
+    df = pyupbit.get_ohlcv(ticker, "day", count=7)  # 3일간 일봉
     df["range"] = (df["high"] - df["low"]) * k
     df["target"] = df["open"] + df["range"].shift(1)  # target = 매수가
 
@@ -41,12 +38,12 @@ def get_ror(ticker, k):
 
 # 변동성 돌파 전략 매수 목표가 추출_시작
 def get_target_price(ticker, k):
-    df = pyupbit.get_ohlcv(ticker, "day", count=3)
+    df = pyupbit.get_ohlcv(ticker, "day", count=2)
     target_price = df.iloc[0]["close"] + (df.iloc[0]["high"] - df.iloc[0]["low"]) * k
     return target_price
 
 
-# 시가 조회_시작
+# 거래 시작 시각 조회_시작
 def get_start_time(ticker):
     df = pyupbit.get_ohlcv(ticker, "day", count=1)
     start_time = df.index[0]
@@ -75,8 +72,39 @@ else:
         try:
             ticker = "KRW-DOGE"
             now = datetime.datetime.now()  # 현재시각
-            start_time = get_start_time(ticker)  # 시작시각
-            end_time = start_time + datetime.timedelta(days=1)  # 끝나는 시각
+            start_time = get_start_time(ticker)  # 거래 시작 시각
+            end_time = start_time + datetime.timedelta(days=1)  # 거래 종료 시각
+
+            # best_k 구하기_시작
+            if best_k_run == 1:
+                ror1, next_ror, best_ror, best_k = 0.0, 0.0, 0.0, 0.1
+                for k in np.arange(0.1, 1.0, 0.1):
+                    next_ror = get_ror(ticker, k)
+                    time.sleep(0.3)
+                    if ror1 < next_ror:  # k값중 최고 k 구하기
+                        if next_ror != 1:  # 수익률이 0% 가 아닐 때
+                            print(
+                                "k : %.1f ror1 : %f  next_ror : %f"
+                                % (k, ror1, next_ror),
+                                "change",
+                            )
+                            ror1 = next_ror
+                            best_k = k
+                            best_ror = ror1
+                        else:
+                            print(
+                                "k : %.1f ror1 : %f  next_ror : %f"
+                                % (k, ror1, next_ror),
+                                "No change_1",
+                            )
+                    else:
+                        print(
+                            "k : %.1f ror1 : %f  next_ror : %f" % (k, ror1, next_ror),
+                            "No change_2",
+                        )
+                print("best_k : %.1f  best_ror : %f" % (best_k, best_ror))
+                best_k_run = 0
+            # best_k 구하기_끝
 
         except Exception as e:
             print(e)
