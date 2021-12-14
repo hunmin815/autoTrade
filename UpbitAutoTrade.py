@@ -54,7 +54,8 @@ def get_start_time(ticker):
 
 # 종목 현재 가격조회_시작
 def get_current_price(ticker):
-    return pyupbit.get_orderbook(tickers=ticker)[0]["orderbook_units"][0]["ask_price"]
+    # return pyupbit.get_orderbook(tickers=ticker)[0]["orderbook_units"][0]["ask_price"] # pyupbit==0.2.18
+    return pyupbit.get_orderbook(ticker=ticker)["orderbook_units"][0]["ask_price"] # pyupbit==0.2.21
 
 
 # 로그인_시작
@@ -70,6 +71,7 @@ else:
     print("내 잔고 : " + str(format(int(my_Balance), ",")) + " 원")
     print("date:" + str(datetime.datetime.now()))
     buy_coin_price = 0.0
+    best_k_run = 1  # k값 구하기 동작 여부
 
     while 1:
         try:
@@ -147,7 +149,7 @@ else:
                     sell_price = (current_price * my_ticker_bal) * 0.9995  # 매도 총가
                     profit = round(buy_price - sell_price, 0)  # 수익
                     print("profit:", profit)
-
+            time.sleep(1.5) # 시세 체크 속도
         except Exception as e:
             print(e)
             time.sleep(1)
