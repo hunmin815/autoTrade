@@ -135,13 +135,13 @@ else:
                     else:
                         print("== NOT BUY!_You Have Already "+ticker.split('-')[1]+" ==")
 
-            else:  # 다음날 오픈전 풀매도
+            else:  # 다음날 오픈 전 풀매도
                 best_k_run = 1
                 my_ticker_bal = get_balance(ticker.split('-')[1])
                 current_price = round(get_current_price(ticker), 0)
                 
                 if (current_price * my_ticker_bal) > 5000: # 보유 중인 종목의 잔고가 최소 주문금액 5000원 초과 시
-                    print("My_DOGE_Balance:", my_ticker_bal)
+                    print("My_"+ticker.split('-')[1]+"_Balance:", my_ticker_bal)
                     print(now, "=== Sell_"+ticker.split('-')[1]+"_All ===")
                     upbit.sell_market_order(ticker, my_ticker_bal) # 시장가 매도
                     sell_price = (current_price * my_ticker_bal) * 0.9995  # 매도 총가
