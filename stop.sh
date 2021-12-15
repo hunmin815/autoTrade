@@ -7,4 +7,4 @@ kill -9 $PID
 echo "==kill check=="
 echo $(ps -ef | grep UpbitAutoTrade.py)
 echo "==UpbitAutoTrade Stop=="
-echo "[$(date)] ==!UpbitAutoTrade Stop!==" >>$SourceDir./nohup.out
+echo "[$(date)] ==!UpbitAutoTrade Stop!==" >>$env_autoTrade_Dir./nohup.out
