@@ -3,6 +3,15 @@ pyupbit 라이브러리를 활용한 Upbit 자동매매 프로그램입니다.
 
 <a href="https://velog.io/@johoon815/series/%EB%B9%84%ED%8A%B8%EC%BD%94%EC%9D%B8-%EC%9E%90%EB%8F%99%EB%A7%A4%EB%A7%A4" target="_blank">**사용 방법(velog)**</a> 👈 쉬프트 클릭 OR 휠 클릭!
 <br><br>
+### Install Library
+```bash
+sudo pip3 install pyupbit numpy requests
+```
+또는
+```bash
+sudo pip install pyupbit numpy requests
+```
+<br><br>
 ### KR-ticker_list.py
 원화(KR) 시장의 종목 코드 리스트를 보여줍니다.
 <br><br>
