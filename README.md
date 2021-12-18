@@ -19,7 +19,7 @@ sudo pip install pyupbit numpy requests
 ### UpbitAutoTrade.py
 자동매매 코드가 들어간 Main 파일입니다.<br>
 
-**.bashrc 파일 수정**
+**.profile 파일 수정**
 맨 아래에 값을 추가 해 주시면 됩니다.
 ```bash
 # Upbit API key
@@ -29,7 +29,7 @@ export secret="업비트 API secret key"
 ```
 적용은 아래 명령어를 입력 해 주세요.
 ```bash
-source .bashrc
+source .profile
 ```
 <br><br>
 일일 단위로 추세를 따라가며 빠른 상승세를 보이는 구간에서 유리한 **변동성 돌파 전략**을 사용하였습니다.
