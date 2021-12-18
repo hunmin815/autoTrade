@@ -1,5 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
+. ~ubuntu/.profile # ~뒤에 이 파일을 실행 할 사용자 입력
 cd $env_autoTrade_Dir
 
 PID1=$(ps -ef | grep UpbitAutoTrade.py | grep -v "grep" | awk {'print $2'} | head -n1)
