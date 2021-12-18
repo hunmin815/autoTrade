@@ -11,15 +11,16 @@ def post_message(token, channel, text):
     )
     print(response)
 
+def nowtime():
+  now = datetime.datetime.today().strftime("%y-%m-%d %H:%M:%S") # 현재 DateTime
+  return now
 
 myToken = os.environ["Slack_Token"]  # Access Token
 myChannel = "비트코인-자동매매"  # 채널 이름 OR 채널 ID
 
 try:
-    now = datetime.datetime.now() # 현재 DateTime
     post_message(myToken, myChannel, " ")
-    post_message(myToken, myChannel, "$$Trading System Alive$$")
-    post_message(myToken, myChannel, "Server Time : " + str(now))
+    post_message(myToken, myChannel, "$$🔌🟢 Trading System Alive$$\nServer Time : " + str(nowtime()))
 except:
     post_message(myToken, myChannel, " ")
-    post_message(myToken, myChannel, "!!Trading System Dead!!")
+    post_message(myToken, myChannel, "!!🏴‍☠️❗🔴 Trading System Dead!!\nServer Time : " + str(nowtime()))
