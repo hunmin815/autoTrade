@@ -1,6 +1,5 @@
 # Ignore File list
 .vscode
-test.py
 Choose_Commit_Type.sh
 autoTrade2_gitPush.sh
 nohup.out
