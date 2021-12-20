@@ -12,12 +12,16 @@ sudo pip3 install pyupbit numpy requests
 sudo pip install pyupbit numpy requests
 ```
 <br><br>
+### test.py
+API와 정상적으로 **통신이 되는지 체크**하는 파일입니다.
+<br><br>
+
 ### KR-ticker_list.py
-원화(KR) 시장의 종목 코드 리스트를 보여줍니다.
+**원화(KR) 시장**의 **종목 코드 리스트**를 보여줍니다.
 <br><br>
 
 ### UpbitAutoTrade.py
-자동매매 코드가 들어간 Main 파일입니다.<br>
+자동매매 코드가 들어간 **Main** 파일입니다.<br>
 
 **.profile 파일 수정**
 맨 아래에 값을 추가 해 주시면 됩니다.
@@ -72,8 +76,32 @@ df = pyupbit.get_ohlcv("KRW-DOGE", "day" ,count=7) # DOGE 종목의 7일간 일�
 <br><br>
 
 ### start.sh
-UpbitAutoTrade.py 파일을 데몬으로 실행 시켜주는 스크립트 파일입니다.
+UpbitAutoTrade.py 파일을 데몬으로 **실행 스크립트** 파일입니다.
 <br><br>
 
 ### stop.sh
-UpbitAutoTrade.py 데몬의 PID를 찾아 kill 시켜주는 스크립트 파일입니다.
+UpbitAutoTrade.py 데몬의 PID를 찾아 **kill 스크립트** 파일입니다.
+<br><br>
+
+### SystemCheck_alertBot.py
+시스템 날짜 조회로 시스템 **상태 체크 후 Slack으로 메시지**를 보냅니다.
+<br><br>
+
+### SystemCheck.sh
+SystemCheck_alertBot.py 실행 스크립트입니다.
+<br><br>
+
+### ProcessCheck_alertBot.py 
+ProcessCheck.sh로 부터 UpbitAutoTrade.py **프로세스의 상태 값을 인자**로 받아와 **정상이면 Alive, 죽어있으면 Dead 후 restart 메시지**를 **Slack**으로 보냅니다.
+<br><br>
+
+### ProcessCheck.sh
+UpbitAutoTrade.py 프로세스의 **상태를 조회**하여 **정상=ok, 비정상=dead, 재기동=restart, 기동실패=fail** 의 값을 ProcessCheck_alertBot.py로 **전달**합니다.
+<br><br>
+
+### Tprice_alertBot.py
+관련 종목의 **매수 목표가, 현재가를 조회**하여 **Slack**으로 메시지를 전달합니다.
+<br><br>
+
+### Tprice_alertBot.sh
+Tprice_alertBot.py파일 실행 스크립트입니다.
