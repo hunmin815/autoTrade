@@ -138,7 +138,7 @@ else:
                             my_ticker_bal = get_balance(ticker.split("-")[1])
                             buy_price = (
                                 current_price * my_ticker_bal
-                            ) * 0.9995  # 매수 총가
+                            ) * 1.0005  # 매수 총가 = (매수가 * 종목수량) * 수수료 더하기
                     else:
                         print(
                             "== NOT BUY!_You Have Already "
@@ -159,8 +159,12 @@ else:
                     upbit.sell_market_order(ticker, my_ticker_bal)  # 시장가 매도
                     time.sleep(5)
 
-                    sell_price = (current_price * my_ticker_bal) * 0.9995  # 매도 총가
-                    profit = round(buy_price - sell_price, 0)  # 수익
+                    sell_price = (
+                        current_price * my_ticker_bal
+                    ) * fee  # 매도 총가 = (매도가 * 종목수량) * 수수료 빼기
+                    profit = (
+                        round(buy_price - sell_price, 0) * -1
+                    )  # 수익 = (매수 총가 - 매도 총가) 반올림 후 -1 곱하기
                     print("profit:", profit)
             time.sleep(1.5)  # 시세 체크 속도
         except Exception as e:
