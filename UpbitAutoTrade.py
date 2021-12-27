@@ -138,7 +138,7 @@ else:
                             my_ticker_bal = get_balance(ticker.split("-")[1])
                             buy_price = (
                                 current_price * my_ticker_bal
-                            ) * 1.0005  # 매수 총가 = (매수가 * 종목수량) * 수수료 더하기
+                            ) # 매수 총가 = (매수가 * 종목수량) (이미 수수료 반영됨)
                     else:
                         print(
                             "== NOT BUY!_You Have Already "
